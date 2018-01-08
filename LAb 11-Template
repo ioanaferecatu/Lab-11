@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <typename X> //Am folosit template pt implementarea clasei stack care are elemente de tip T
+class Stack{
+
+public:
+    vector <X> vect;  
+    
+    void push(X x);  //Metoda pt adaugarea unui elemnt de tip X in stiva
+    
+    void pop(); //Metoda pt stergerea ultimului element din stiva 
+    
+    bool Empty(); //Metoda de tip bool care returneaza daca true daca stiva este goala si false daca stiva nu e goala
+    
+    X top(); //Metoda care returneaza el din varful stivei
+
+};
+
+template <typename X>
+void Stack<X>::push(X x)
+{
+        vect.push_back(x); //Metoda foloseste functia predefinita din biblioteca <<vector>> push_back
+}
+    
+
+
+template <typename X>
+void Stack<X>::pop()
+{
+    if(vect.empty()==0) //MEtoda se aplica doar daca stiva nu este goala
+        vect.pop_back(); //Metoda foloseste functia predefinita din biblioteca <<vector>> pop_back
+    
+}
+
+template <typename X>
+bool Stack<X>::Empty()
+{
+    return vect.empty(); //Metoda foloseste functia predefinita din biblioteca <<vector>> empty
+}
+
+template <typename X>
+X Stack<X>::top()
+{
+    return vect.back(); //Metoda foloseste functia predefinita din biblioteca <<vector>> back
+}
+
+int main(){
+
+    Stack<int> int_stack; //Declararea unuei stive cu el de tip int
+    Stack<float> float_stack;  //Declararea unuei stive cu el de tip float
+
+    float_stack.push(2.5);
+    cout<<float_stack.top()<<endl;
+
+    int_stack.push(1);
+    int_stack.push(2);
+    int_stack.push(3);
+    cout<<int_stack.top()<<endl;
+
+    if(int_stack.Empty() == 0)
+        cout<<"Stiva nu e goala"<<endl;
+    else cout<<"Stiva e goala"<<endl;
+
+    int_stack.push(4);
+    cout<<int_stack.top()<<endl;
+
+    int_stack.pop();
+    int_stack.pop();
+    int_stack.pop();
+    int_stack.pop();
+    if(int_stack.Empty() == 0)
+        cout<<"Stiva nu e goala"<<endl;
+    else cout<<"Stiva e goala"<<endl;
+
+    return 0;
+}
