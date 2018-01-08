@@ -58,6 +58,7 @@ int main(){
     int_stack.push(1);
     int_stack.push(2);
     int_stack.push(3);
+    int_stack.push(7);
     cout<<int_stack.top()<<endl;
 
     if(int_stack.Empty() == 0)
